@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa</title>
+    <style>
+        .form-signin {
+            width: 30%;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .form-signin h1 {
+            text-align: center;
+        }
+        .form-signin label {
+            display: block;
+            margin-top: 10px;
+        }
+        .form-signin input {
+            width: 80%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .form-signin button {
+            width: 50%;
+            padding: 5px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-signin">
+        <form action="/update/<%=paper.id %>" method="POST" enctype="multipart/form-data" onsubmit="return nofication()">
+            <h1>Thêm bài báo</h1>
+            <input type="hidden" name="id" value="<%= paper.id %>">
+            
+            <label for="title">Tên bài báo</label>
+            <input type="text" name="title" id="title" required value="<%= paper.title %>">
+            <label for="author">Nhóm tác giả</label>
+            <input type="text" name="author" id="author" required value="<%= paper.author %>">
+            <label for="isbn">Chỉ số ISBN</label>
+            <input type="text" name="isbn" id="isbn" value="<%= paper.isbn %>" required>
+            <label for="page">Số trang</label>
+            <input type="number" name="page" id="page" value="<%= paper.page %>" required>
+            <label for="year">Năm xuất bản</label>
+            <input type="number" name="year" id="year" value="<%= paper.year %>" required>
+            <label for="image">Ảnh </label>
+            <img src="<%= paper.image %>" alt="Current Image" style="width: 100px; height: 100px;">
+<input type="hidden" name="old_image" value="<%= paper.image %>">
+<input type="file" name="image" id="image">
+
+            <!-- <input type="file" name="image" id="image" value="<%= paper.image %>" required> -->
+            <button type="submit" >Thêm</button>
+        </form>
+
+    </div>
+    <script >
+        function nofication() {
+            alert("Thêm bài báo thành công!");
+        }
+    </script>
+    
+</body>
+</html>
